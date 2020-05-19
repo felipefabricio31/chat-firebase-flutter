@@ -11,6 +11,15 @@ class TextComposer extends StatefulWidget {
 class _TextComposerState extends State<TextComposer> {
   bool _isComposing = false;
 
+  final TextEditingController _controller = TextEditingController();
+
+  void _reset() {
+    _controller.clear();
+    setState(() {
+      _isComposing = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,6 +32,7 @@ class _TextComposerState extends State<TextComposer> {
           ),
           Expanded(
             child: TextField(
+              controller: _controller,
               decoration:
                   InputDecoration.collapsed(hintText: "Enviar uma Mensagem"),
               onChanged: (text) {
@@ -30,12 +40,20 @@ class _TextComposerState extends State<TextComposer> {
                   _isComposing = text.isNotEmpty;
                 });
               },
-              onSubmitted: (text) {},
+              onSubmitted: (text) {
+                widget.sendMessage(text);
+                _reset();
+              },
             ),
           ),
           IconButton(
             icon: Icon(Icons.send),
-            onPressed: _isComposing ? () {} : null,
+            onPressed: _isComposing
+                ? () {
+                    widget.sendMessage(_controller.text);
+                    _reset();
+                  }
+                : null,
           )
         ],
       ),

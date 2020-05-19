@@ -14,11 +14,9 @@ class _ChatScreenState extends State<ChatScreen> {
         title: Text("Olá"),
         elevation: 0,
       ),
-      body: TextComposer(
-        (text){
-          
-        }
-      ),
+      body: TextComposer((text) {
+        print(text);
+      }),
     );
   }
 }
