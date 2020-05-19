@@ -24,21 +24,23 @@ Firestore.instance
 .document()
 .setData({"texto": "Felipe S", "from": "Felipe2", "read": false});
 
-//Unica busca
-QuerySnapshot snapshot =
-await Firestore.instance.collection("mensagens").getDocuments();
-snapshot.documents.forEach((d) {
-print(d.data);
-print(d.documentID);
-});
+<h4>Unica busca</h4>
+    <pre>
+        QuerySnapshot snapshot = await Firestore.instance.collection("mensagens").getDocuments();
+        snapshot.documents.forEach((d) {
+            print(d.data);
+            print(d.documentID);
+        });
+    </pre>
 
-  <h4>Unico doc</h4>
+  <h4>Unico documento</h4>
     <pre>
         DocumentSnapshot snapshot = await Firestore.instance
         .collection("mensagens")
         .document("tHZFLRIWR2jv3gaZ1hls")
         .get();
-        print(snapshot.data);   
+
+        print(snapshot.data);
     </pre>
 
 <h4>Atualiza em tempo real</h4>
@@ -51,7 +53,6 @@ print(d.documentID);
     </pre>
 
 <h4>Unico documento em tempo real</h4>
-
     <pre>
         Firestore.instance
         .collection("mensagens")
