@@ -1,12 +1,10 @@
 import 'dart:io';
-
 import 'package:chat_firebase/text_composer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
 import 'chat_message.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -79,7 +77,7 @@ class _ChatScreenState extends State<ChatScreen> {
     if (imgFile != null) {
       StorageUploadTask task = FirebaseStorage.instance
           .ref()
-          .child(DateTime.now().millisecond.toString())
+          .child(user.uid + DateTime.now().millisecond.toString())
           .putFile(imgFile);
 
       setState(() {
