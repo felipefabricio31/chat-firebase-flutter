@@ -1,30 +1,42 @@
-# chat_firebase
+# Agenda de Contatos
 
-A new Flutter project.
+<img src="" width="100%" heigth="auto">
 
-## Getting Started
+App desenvolvido em Flutter com a opção de CRUD que salva as informações no Firebase e retorna em tempo real.
+<p>Este app apresenta o conceito de Chat Online, </p>
 
-This project is a starting point for a Flutter application.
+## Introdução
 
-A few resources to get you started if this is your first Flutter project:
+Alguns recursos para você começar se este for seu primeiro projeto Flutter:
 
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Para obter ajuda sobre como iniciar o Flutter, consulte nosso
+[online documentation](https://flutter.dev/docs), que oferece tutoriais,
+amostras, orientações sobre desenvolvimento móvel e uma referência completa da API.
+
+## Publicar app Flutter
+
+[Tutorial](https://flutter.dev/docs/deployment/android)
+
+## Alterar Ícone do App
+
+[Tutorial 1](https://www.youtube.com/watch?v=e18HtjjoqFM)
 
 ## Instruções para o Firebase
 
-Firestore.instance
-.collection("mensagens")
-.document("tHZFLRIWR2jv3gaZ1hls")
-.collection("arquivos")
-.document()
-.setData({"texto": "Felipe S", "from": "Felipe2", "read": false});
+<h4>Adiciona uma nova coleção no Firebase.</h4>
+    <pre>
+        Firestore.instance
+        .collection("mensagens")
+        .document("tHZFLRIWR2jv3gaZ1hls")
+        .collection("arquivos")
+        .document()
+        .setData({"texto": "Felipe S", "from": "Felipe2", "read": false});
+    </pre>
 
-<h4>Unica busca</h4>
+<h4>Retorna a lista de documentos, mas não é em tempo real.</h4>
     <pre>
         QuerySnapshot snapshot = await Firestore.instance.collection("mensagens").getDocuments();
         snapshot.documents.forEach((d) {
@@ -33,17 +45,16 @@ Firestore.instance
         });
     </pre>
 
-  <h4>Unico documento</h4>
+<h4>Retorna apenas um documento.</h4>
     <pre>
         DocumentSnapshot snapshot = await Firestore.instance
         .collection("mensagens")
         .document("tHZFLRIWR2jv3gaZ1hls")
         .get();
-
         print(snapshot.data);
     </pre>
 
-<h4>Atualiza em tempo real</h4>
+<h4>Retorna documentos e atualiza a lista em tempo real.</h4>
     <pre>
         Firestore.instance.collection("mensagens").snapshots().listen((dado) {
             dado.documents.forEach((d) {
@@ -52,7 +63,7 @@ Firestore.instance
         });
     </pre>
 
-<h4>Unico documento em tempo real</h4>
+<h4>Retorna o único documento em tempo real.</h4>
     <pre>
         Firestore.instance
         .collection("mensagens")
