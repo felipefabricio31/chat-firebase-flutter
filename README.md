@@ -3,7 +3,7 @@
 <img src="" width="100%" heigth="auto">
 
 App desenvolvido em Flutter com a opção de CRUD que salva as informações no Firebase e retorna em tempo real.
-<p>Este app apresenta o conceito de Chat Online, </p>
+<p>Este app apresenta o conceito de Chat Online, o app permite a o envio e recebimento de mensagens ou fotos de outros usuários, toda informação é armazenada no Firebase e o login é realizado pelo google.</p>
 
 ## Introdução
 
